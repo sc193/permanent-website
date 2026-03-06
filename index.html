@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Domino — Did the Fall of Saigon Prove or Disprove the Domino Theory?</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #ffffff;
+  color: #111111;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13pt;
+  line-height: 1.75;
+}
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64pt 0 54pt;
+}
+.page-rule { border: none; border-top: 1px solid #111; margin-bottom: 5pt; }
+.running-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+  color: #555;
+  margin-bottom: 32pt;
+}
+.running-head span { font-style: italic; }
+
+/* COVER */
+#cover {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 10vh 40pt;
+  border-bottom: 2px solid #111;
+}
+.cover-series { font-size: 8.5pt; letter-spacing: 0.18em; text-transform: uppercase; color: #666; margin-bottom: 64pt; }
+h1.book-title { font-family: "Times New Roman", serif; font-size: 34pt; font-weight: bold; line-height: 1.15; margin-bottom: 14pt; }
+.cover-subtitle { font-size: 13pt; font-style: italic; color: #444; margin-bottom: 32pt; }
+.cover-divider { width: 40pt; border: none; border-top: 1px solid #111; margin: 0 auto 28pt; }
+.cover-epigraph { font-size: 10.5pt; font-style: italic; color: #444; line-height: 1.6; margin-bottom: 7pt; max-width: 380pt; }
+.cover-epigraph-attr { font-size: 9pt; color: #666; margin-bottom: 64pt; }
+.cover-meta { font-size: 9pt; letter-spacing: 0.08em; color: #777; text-transform: uppercase; }
+
+/* TOC */
+#toc { border-bottom: 1px solid #ddd; }
+.toc-heading { font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 7pt; }
+h2.toc-title { font-size: 20pt; font-weight: bold; margin-bottom: 24pt; border-bottom: 1px solid #111; padding-bottom: 8pt; }
+.toc-list { list-style: none; }
+.toc-list li { display: flex; align-items: baseline; gap: 4pt; padding: 5pt 0; border-bottom: 1px dotted #ccc; font-size: 11pt; }
+.toc-list li:last-child { border-bottom: none; }
+.toc-roman { min-width: 26pt; font-size: 9pt; color: #666; font-style: italic; }
+.toc-list a { color: #111; text-decoration: none; flex: 1; }
+.toc-list a:hover { text-decoration: underline; }
+
+/* CHAPTER */
+.chapter { border-bottom: 1px solid #ddd; }
+.chapter-label { font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: #666; display: block; margin-bottom: 5pt; }
+h2.chapter-title { font-size: 22pt; font-weight: bold; line-height: 1.2; margin-bottom: 5pt; }
+.chapter-subtitle { font-size: 11pt; font-style: italic; color: #555; margin-bottom: 18pt; }
+.chapter-divider { width: 32pt; border: none; border-top: 1px solid #111; margin-bottom: 18pt; }
+
+/* BODY */
+.chapter p { margin-bottom: 11pt; text-align: justify; hyphens: auto; }
+.chapter .page > p:first-of-type::first-letter {
+  font-size: 3.6em; font-weight: bold; line-height: 0.75;
+  float: left; margin: 0.07em 0.08em 0 0;
+}
+h3 { font-size: 13pt; font-weight: bold; font-style: italic; margin: 20pt 0 7pt; }
+
+/* BLOCK QUOTE */
+.pull-quote { margin: 18pt 28pt; border-left: 2px solid #111; padding-left: 13pt; }
+.pull-quote p { font-size: 11.5pt !important; font-style: italic; margin-bottom: 4pt !important; text-align: left !important; }
+.pull-quote p::first-letter { all: unset; }
+.pull-quote cite { font-size: 8.5pt; color: #666; font-style: normal; display: block; }
+
+/* EVIDENCE BOX */
+.evidence-box { border: 1px solid #bbb; padding: 13pt 16pt; margin: 18pt 0; }
+.evidence-box h4 { font-size: 9pt; letter-spacing: 0.14em; text-transform: uppercase; font-weight: bold; margin-bottom: 9pt; }
+.evidence-box p { font-size: 11pt !important; text-align: left !important; margin-bottom: 7pt !important; }
+.evidence-box p::first-letter { all: unset; }
+
+/* SOURCE TAG */
+.source-tag { font-size: 8pt; color: #666; font-style: italic; }
+.source-tag::before { content: " ("; }
+.source-tag::after  { content: ")"; }
+
+/* TIMELINE */
+.timeline { border-left: 1px solid #999; margin: 16pt 0 16pt 16pt; padding-left: 16pt; }
+.timeline-event { margin-bottom: 13pt; position: relative; }
+.timeline-event::before { content: ''; position: absolute; left: -20pt; top: 7pt; width: 5pt; height: 5pt; background: #111; border-radius: 50%; }
+.timeline-date { font-size: 9pt; font-weight: bold; letter-spacing: 0.05em; display: block; margin-bottom: 2pt; }
+.timeline-event p { font-size: 11pt !important; margin-bottom: 0 !important; text-align: left !important; }
+.timeline-event p::first-letter { all: unset; }
+
+/* TABLE */
+.arg-table { width: 100%; border-collapse: collapse; margin: 16pt 0; font-size: 10.5pt; }
+.arg-table thead tr { border-bottom: 2px solid #111; }
+.arg-table thead th { font-size: 8.5pt; letter-spacing: 0.1em; text-transform: uppercase; padding: 5pt 7pt; text-align: left; font-weight: bold; }
+.arg-table tbody tr { border-bottom: 1px solid #ddd; }
+.arg-table tbody td { padding: 5pt 7pt; vertical-align: top; line-height: 1.4; }
+.proves, .disproves { font-style: italic; }
+
+/* VERDICT */
+#verdict { border-top: 2px solid #111; border-bottom: 2px solid #111; }
+#verdict .page { text-align: center; padding-top: 48pt; padding-bottom: 48pt; }
+#verdict h2 { font-size: 20pt; font-weight: bold; margin-bottom: 16pt; }
+#verdict p { font-size: 12pt; font-style: italic; max-width: 460pt; margin: 0 auto 11pt; line-height: 1.6; text-align: center; }
+.verdict-divider { width: 40pt; border: none; border-top: 1px solid #111; margin: 16pt auto; }
+
+/* SOURCES */
+#sources { border-top: 1px solid #ddd; }
+.source-heading { font-size: 8.5pt; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-bottom: 5pt; }
+h2.sources-title { font-size: 20pt; font-weight: bold; margin-bottom: 22pt; border-bottom: 1px solid #111; padding-bottom: 7pt; }
+.source-item { margin-bottom: 11pt; padding-bottom: 11pt; border-bottom: 1px dotted #ccc; font-size: 11pt; line-height: 1.55; }
+.source-item:last-child { border-bottom: none; }
+.source-letter { font-weight: bold; font-size: 9pt; }
+.sub-heading { font-size: 12pt; font-weight: bold; margin: 20pt 0 11pt; border-top: 1px solid #ddd; padding-top: 14pt; }
+
+/* BACK TOP */
+.back-top { display: block; text-align: center; padding: 16pt; font-size: 9pt; letter-spacing: 0.12em; color: #777; text-decoration: none; border-top: 1px solid #ddd; text-transform: uppercase; }
+.back-top:hover { color: #111; }
+
+/* MOBILE */
+@media (max-width: 700px) {
+  body { font-size: 12pt; }
+  .page { padding: 32pt 16pt 44pt; }
+  #cover { padding: 8vh 16pt; }
+  h1.book-title { font-size: 24pt; }
+  h2.chapter-title { font-size: 18pt; }
+  .pull-quote { margin: 14pt 0 14pt 10pt; }
+  .arg-table { font-size: 9.5pt; }
+  .arg-table thead th, .arg-table tbody td { padding: 4pt 5pt; }
+}
+@media print {
+  .chapter { page-break-before: always; }
+  .back-top { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── COVER ── -->
+<section id="cover">
+  <p class="cover-series">A Historical Analysis &nbsp;·&nbsp; Cold War Studies</p>
+  <h1 class="book-title">The Last Domino</h1>
+  <p class="cover-subtitle">Did the Fall of Saigon Prove or Disprove the Domino Theory?</p>
+  <hr class="cover-divider">
+  <p class="cover-epigraph">"The most decisive refutation of the domino theory came in 1975<br>in the aftermath of communist victory in Vietnam."</p>
+  <p class="cover-epigraph-attr">— Jerome Slater, State University of New York at Buffalo</p>
+  <p class="cover-meta">Based on Primary &amp; Secondary Sources &nbsp;·&nbsp; 2026</p>
+</section>
+
+
+<!-- ── TABLE OF CONTENTS ── -->
+<section id="toc">
+  <div class="page">
+    <p class="toc-heading">Contents</p>
+    <h2 class="toc-title">Table of Contents</h2>
+    <ul class="toc-list">
+      <li><span class="toc-roman">I.</span>    <a href="#ch1">Introduction: A Theory Built on Fear</a></li>
+      <li><span class="toc-roman">II.</span>   <a href="#ch2">What Was the Domino Theory? Origins &amp; Logic</a></li>
+      <li><span class="toc-roman">III.</span>  <a href="#ch3">The Vietnam War: Context and Escalation</a></li>
+      <li><span class="toc-roman">IV.</span>   <a href="#ch4">The Fall of Saigon: April 30, 1975</a></li>
+      <li><span class="toc-roman">V.</span>    <a href="#ch5">The Argument That the Fall Proved the Domino Theory</a></li>
+      <li><span class="toc-roman">VI.</span>   <a href="#ch6">The Argument That the Fall Disproved the Domino Theory</a></li>
+      <li><span class="toc-roman">VII.</span>  <a href="#ch7">Geopolitical Aftermath: Did the Dominoes Fall?</a></li>
+      <li><span class="toc-roman">VIII.</span> <a href="#ch8">The Verdict: What the Evidence Demands</a></li>
+      <li><span class="toc-roman">IX.</span>   <a href="#sources">Sources &amp; Bibliography</a></li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ── CHAPTER 1 ── -->
+<article class="chapter" id="ch1">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter I</span></div>
+    <span class="chapter-label">Chapter One</span>
+    <h2 class="chapter-title">Introduction: A Theory Built on Fear</h2>
+    <p class="chapter-subtitle">The Cold War's most consequential prediction and the moment it was tested</p>
+    <hr class="chapter-divider">
+    <p>On April 30, 1975, two North Vietnamese T-54 tanks crashed through the iron gates of Saigon's Independence Palace. A soldier scaled the balcony and planted the flag of the National Liberation Front. South Vietnam — as a political entity — ceased to exist. In a moment measured in seconds, the United States lost the longest and most divisive war in its history, and the central question of American Cold War strategy was laid bare for history to judge.</p>
+    <p>That question had a name: the Domino Theory. Coined and articulated by American presidents from Eisenhower to Nixon, the theory held that if one nation in Southeast Asia fell to communism, its neighbors would topple in sequence — like a row of dominoes — until the entire region, and eventually the world, was swallowed by communist ideology. Vietnam was supposed to be the wall that stopped the chain reaction. When Saigon fell, America's worst fear appeared realized.</p>
+    <p>But was it? This ebook examines the Fall of Saigon not merely as a military event but as an empirical test of a geopolitical theory that cost more than 58,000 American lives, killed an estimated three million Vietnamese, and reshaped the moral and strategic identity of the United States forever. Using sources from historical encyclopedias, academic debates, declassified military analyses, and firsthand accounts, we will build a complete and honest answer — one that does not flatter either ideological camp, but follows the evidence wherever it leads.</p>
+    <p>The answer, as this analysis will demonstrate, is neither simple nor comfortable. The Fall of Saigon <em>partially</em> proved the domino theory in the narrow context of Indochina — but <em>decisively disproved</em> it in the broader strategic context that American policymakers actually used to justify the war. The dominoes that were predicted to fall across Southeast Asia, across Asia, and toward American shores — did not fall. History administered a verdict, and it was a split decision.</p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 2 ── -->
+<article class="chapter" id="ch2">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter II</span></div>
+    <span class="chapter-label">Chapter Two</span>
+    <h2 class="chapter-title">What Was the Domino Theory?</h2>
+    <p class="chapter-subtitle">Origins, logic, and the political architecture of containment</p>
+    <hr class="chapter-divider">
+    <p>The Domino Theory was not born in a vacuum. It emerged from the traumatic experience of watching nation after nation fall to Soviet-backed communist governments in the immediate aftermath of World War II — Poland, Czechoslovakia, Hungary, Romania, Bulgaria, Albania, and Yugoslavia all shifted behind what Winston Churchill called the "Iron Curtain." China fell in 1949. North Korea launched a war in 1950. Communist insurgencies smoldered in Greece, Iran, and Turkey.</p>
+    <p>American policymakers of the era — men like Eisenhower, Kennedy, Dean Rusk, McGeorge Bundy, Robert McNamara, and Walt Rostow — were shaped by the Munich analogy: the lesson that a greedy, expansionist adversary cannot be appeased. The more he is given, the stronger and more ambitious he becomes. <span class="source-tag">Source B</span> The lesson drawn from 1938 was that the line had to be drawn early, when the aggressor was weaker. Communism, in their strategic calculation, was the new fascism — and Southeast Asia was the new Rhineland.</p>
+    <div class="pull-quote">
+      <p>"Kennedy was convinced that if one Southeast Asian country turned to communism, other nations would do the same."</p>
+      <cite>— Vietnam War Overview, Primary Source A</cite>
+    </div>
+    <p>President Dwight D. Eisenhower publicly articulated the theory on April 7, 1954, during a press conference — just weeks before France's catastrophic defeat at Dien Bien Phu. He described a "falling domino" principle: the loss of Indochina could lead to the fall of Burma, Thailand, the Malay Peninsula, Indonesia, and beyond. The strategic consequence, in his framing, was not merely a regional inconvenience but a threat to America's fundamental security interests in the Pacific.</p>
+    <h3>The Logic of the Theory</h3>
+    <p>The domino theory rested on several interlocking premises. First, that communist movements in individual countries were not merely indigenous but were directed and empowered by a coordinated international communist bloc centered in Moscow and Beijing. Second, that the psychological and political consequences of one nation's fall would embolden communist forces in neighboring nations and demoralize their anti-communist defenders. Third, that the loss of "insignificant" nations would inexorably lead to the loss of significant ones — the whole point of the theory was that no loss was truly small.</p>
+    <div class="evidence-box">
+      <h4>The Theory's Core Claims</h4>
+      <p><strong>Claim 1:</strong> Communist expansion was centrally directed and coordinated — a unified ideological force, not a collection of independent national movements.</p>
+      <p><strong>Claim 2:</strong> The psychological effect of any communist victory would destabilize neighboring anti-communist governments, regardless of their individual strengths.</p>
+      <p><strong>Claim 3:</strong> North Vietnam was acting as an instrument of China, and China had both the intention and capability of expansionism throughout Asia.</p>
+      <p><strong>Claim 4:</strong> The fall of Vietnam would lead to the fall of Laos, Cambodia, Thailand, Malaysia, and eventually all of Southeast Asia.</p>
+      <p style="margin-bottom:0;"><em>Source: "Vietnam War: Was U.S. Military Intervention in Vietnam Justified?" — Source B</em></p>
+    </div>
+    <p>As Jerome Slater of the State University of New York at Buffalo argued in the scholarly debate preserved in our source materials, the domino theory was "inapplicable" to the Vietnamese conflict if even one of three propositions were true: that the revolution in the South was initially an indigenous one; that Northern intervention in the South was a response to prior American intervention; or that North Vietnam was not a separate state from South Vietnam. Slater's assessment — written from the "No" side of the intervention debate — contended that all three propositions were in fact true. <span class="source-tag">Source B</span></p>
+    <p>However, the defenders of U.S. intervention had their own logical framework. From their perspective, Vietnam was simply the most recent front in a global conflict that had already consumed half of Europe and all of mainland China. The decision to defend South Vietnam was, in the words of the pro-intervention viewpoint, "entirely in keeping with U.S. policy of containment as it was practiced at the time." <span class="source-tag">Source B</span> To understand whether the Fall of Saigon proved or disproved the domino theory, we must first understand the war that preceded it.</p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 3 ── -->
+<article class="chapter" id="ch3">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter III</span></div>
+    <span class="chapter-label">Chapter Three</span>
+    <h2 class="chapter-title">The Vietnam War: Context and Escalation</h2>
+    <p class="chapter-subtitle">From colonial legacy to Cold War proxy conflict</p>
+    <hr class="chapter-divider">
+    <p>Vietnam's story did not begin with communism. It began with colonialism. Vietnam was a colony of France beginning in 1858, becoming part of French Indochina in 1887. In 1940, Japan invaded during World War II. The man who would shape Vietnam's destiny, Ho Chi Minh, formed the Viet Minh — the League for the Independence of Vietnam — to fight both Japanese and French occupiers. <span class="source-tag">Source A</span></p>
+    <p>After Japan's defeat in 1945, France attempted to re-establish colonial control over the south while Ho Chi Minh declared independence and established the Democratic Republic of Vietnam in the north. A decade of war followed. France's final defeat at the Battle of Dien Bien Phu in May 1954 led to the Geneva Conference, which temporarily divided Vietnam at the 17th parallel. The agreement called for national elections in 1956 — elections that would almost certainly have returned Ho Chi Minh to power over a unified Vietnam. <span class="source-tag">Source B</span></p>
+    <h3>The Division and American Involvement</h3>
+    <p>The Eisenhower administration, determined not to allow a communist Vietnam, worked to undermine the Geneva Accords and support a permanently divided Vietnam with an anti-communist government in the south. Ngo Dinh Diem took control of South Vietnam in 1955 and refused to hold the scheduled elections. <span class="source-tag">Source B</span> The United States recognized and backed his government.</p>
+    <p>Between 1961 and 1962, the number of U.S. military advisers in Saigon grew from 700 to 12,000. By the time of President Kennedy's assassination in 1963, that number had reached 16,200. <span class="source-tag">Source B</span> Kennedy himself believed in the domino theory — he was "convinced that if one Southeast Asian country turned to communism, other nations would do the same" — but he stopped short of committing large combat forces. <span class="source-tag">Source A</span></p>
+    <div class="timeline">
+      <div class="timeline-event">
+        <span class="timeline-date">1954</span>
+        <p>Geneva Conference divides Vietnam at the 17th parallel. Elections promised for 1956 to reunify the country — never held.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">1955–1963</span>
+        <p>Diem regime in South Vietnam. U.S. advisers increase from hundreds to 16,200 by 1963. Diem assassinated in military coup, November 1963.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">August 1964</span>
+        <p>Gulf of Tonkin Resolution. Congress grants President Johnson authority to escalate military efforts without a formal declaration of war.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">March 1965</span>
+        <p>First U.S. combat troops — two Marine battalions — land at Da Nang. By December 1965: 200,000 U.S. troops in Vietnam.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">January 1968</span>
+        <p>Tet Offensive. Approximately 85,000 North Vietnamese troops attack cities across South Vietnam. Tactical failure for North Vietnam but psychological turning point for American public opinion.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">1969–1972</span>
+        <p>Nixon's Vietnamization policy: transfer combat to South Vietnamese forces, withdraw U.S. troops. Peak U.S. troop level: 543,000 in April 1969.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">January 27, 1973</span>
+        <p>Paris Peace Accords signed. U.S. troops withdraw. North Vietnam violates the accords almost immediately, infiltrating over 14,000 additional troops and 86,000 tons of supplies south in 1973 alone.</p>
+      </div>
+      <div class="timeline-event">
+        <span class="timeline-date">April 30, 1975</span>
+        <p>Saigon falls. South Vietnam surrenders unconditionally. The Vietnam War ends.</p>
+      </div>
+    </div>
+    <h3>The Human Cost</h3>
+    <p>The final accounting of the Vietnam War staggered the imagination. More than 58,000 Americans were killed in action. South Vietnamese forces suffered 200,000 to 250,000 deaths. North Vietnamese and Viet Cong losses exceeded 849,000 military fatalities. Estimates of total Vietnamese — soldier and civilian — killed reach approximately three million. <span class="source-tag">Sources A, C</span> The United States spent roughly $14 billion from 1961 to 1975 on the war. <span class="source-tag">Source A</span></p>
+    <p>The war also destroyed something less measurable: the American public's trust in its government. Scholars point to U.S. involvement in Vietnam as one of two major events — the other being Watergate — that led to a lasting decline in American confidence in government institutions. The phrase "credibility gap" entered the political vocabulary. So did another term: the "Vietnam Syndrome" — the profound American reluctance to commit to foreign wars without clear objectives, overwhelming force, and domestic consensus. <span class="source-tag">Source B</span></p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 4 ── -->
+<article class="chapter" id="ch4">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter IV</span></div>
+    <span class="chapter-label">Chapter Four</span>
+    <h2 class="chapter-title">The Fall of Saigon: April 30, 1975</h2>
+    <p class="chapter-subtitle">The event that closed the book on American military involvement in Vietnam</p>
+    <hr class="chapter-divider">
+    <p>By 1974, the writing was on the wall for South Vietnam. The Watergate scandal had forced the resignation of President Nixon — South Vietnam's most committed American patron. Congress had slashed military aid from $2.2 billion in fiscal year 1973 to $1.1 billion in 1974, and then to only $700 million in 1975 against President Nixon's $1.45 billion request. <span class="source-tag">Source C</span> Fuel stocks allowed only 15–20 days of sustained operations for South Vietnamese forces. Artillery shell reserves dwindled below 30 days' supply. <span class="source-tag">Source C</span></p>
+    <p>While South Vietnam starved of supplies, North Vietnam feasted on Soviet and Chinese support. By early 1975, Hanoi had stockpiled approximately 600 T-54/55 tanks, 500 armored personnel carriers, and over 1,000 artillery pieces. Over 200,000 People's Army of Vietnam (PAVN) troops were concentrated along the South Vietnamese border. <span class="source-tag">Source C</span></p>
+    <h3>The Spring Offensive</h3>
+    <p>On March 10, 1975, North Vietnamese General Văn Tiến Dũng launched the decisive phase of his offensive at Ban Me Thuot in the Central Highlands. Fewer than 6,000 effective ARVN troops faced an estimated 30,000 PAVN attackers equipped with tanks and artillery. The city fell within 32 hours. <span class="source-tag">Source C</span></p>
+    <p>President Thiệu panicked. He ordered the military evacuation of the central highlands — abandoning approximately 200,000 South Vietnamese soldiers, one-fifth of the entire southern army. <span class="source-tag">Source D</span> The retreat became a rout. Hue fell on March 25. Da Nang fell on March 30. Approximately 100,000 ARVN troops capitulated at Da Nang without firing a shot, abandoning vast quantities of equipment. <span class="source-tag">Source C</span></p>
+    <div class="pull-quote">
+      <p>"Everywhere, South Vietnamese refugees were fleeing from the communists. American journalists covered the event, calling the refugee streams an ocean of fear, distress, and numb desperation."</p>
+      <cite>— Lutz, R. C., "Fall of Saigon," Salem Press Encyclopedia (Source D)</cite>
+    </div>
+    <h3>The Last Days</h3>
+    <p>By April, with Saigon encircled and PAVN artillery within striking distance of the capital, the political structure of South Vietnam collapsed in rapid succession. President Thiệu resigned on April 21, 1975, in a nationally televised address, lambasting the United States for reducing military aid and failing to intervene. He fled to Taiwan on April 25. <span class="source-tag">Source C</span></p>
+    <p>President Ford, recognizing that military salvation was impossible, announced American acceptance of communist victory at Tulane University on April 23. On April 29, the United States launched Operation Frequent Wind — the largest helicopter airlift in history — employing Marine and Air Force helicopters to extract Americans and South Vietnamese allies from the rooftops of the U.S. Embassy and CIA building over 18 hours. <span class="source-tag">Sources C, D</span></p>
+    <p>In total, Operation Frequent Wind evacuated over 7,000 individuals — approximately 1,373 Americans and 5,595 South Vietnamese. Excess helicopters were pushed overboard from carrier decks to accommodate incoming flights. Two Marines were killed by PAVN shelling during the operation. The final helicopter lifted off at 4:58 a.m. on April 30. <span class="source-tag">Source C</span></p>
+    <h3>The Surrender</h3>
+    <p>At approximately 10:45 a.m. on April 30, 1975, T-54 tanks numbered 843 and 390 crashed through the gates of Saigon's Independence Palace. PAVN soldiers raised the National Liberation Front flag over the building. President Dương Văn Minh — who had assumed office only two days earlier — broadcast an unconditional surrender announcement via radio and television. North Vietnamese Colonel Bùi Tín entered the palace, rejected Minh's formal surrender offer, and informed him that revolutionary forces already controlled the situation. <span class="source-tag">Source C</span></p>
+    <p>The Republic of Vietnam, which had existed for 21 years, was dissolved. Vietnam was reunified under communist rule in 1976 as the Socialist Republic of Vietnam. The city of Saigon was renamed Ho Chi Minh City.</p>
+    <div class="evidence-box">
+      <h4>Scale of the Humanitarian Crisis That Followed</h4>
+      <p><strong>Reeducation Camps:</strong> Between 300,000 and 1 million South Vietnamese passed through communist reeducation camps from 1975 to the mid-1980s. Conditions included chronic malnutrition (daily rations of 300–500 grams of rice), tropical diseases without treatment, and forced labor. Tens of thousands died in the camps.</p>
+      <p><strong>Boat People:</strong> Between 1975 and 1995, approximately 800,000 to 1.5 million Vietnamese fled by sea in makeshift vessels. An estimated 200,000 to 400,000 drowned, were attacked by pirates, or died en route.</p>
+      <p><strong>Economic Collapse:</strong> Forced collectivization produced hyperinflation reaching 300–400% annually by the mid-1980s. Vietnam transitioned from a net rice exporter to facing chronic shortages of up to 2 million tons annually.</p>
+      <p style="margin-bottom:0;"><em>Source: Fall of Saigon extended document, Source C</em></p>
+    </div>
+    <p>For most Americans, the fall of Saigon was seen as an unavoidable end to a tragedy — and the national consensus was to try to forget American military involvement in Vietnam as quickly as possible. <span class="source-tag">Source D</span> But history would not allow that forgetting. The fall demanded an accounting, and the first and most pressing question was: did the dominoes fall?</p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 5 ── -->
+<article class="chapter" id="ch5">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter V</span></div>
+    <span class="chapter-label">Chapter Five</span>
+    <h2 class="chapter-title">The Argument That the Fall <em>Proved</em> the Domino Theory</h2>
+    <p class="chapter-subtitle">The case for the theory's partial vindication</p>
+    <hr class="chapter-divider">
+    <p>Intellectual honesty requires acknowledging that the Fall of Saigon did produce tangible evidence in the domino theory's favor — particularly within the borders of Indochina. To dismiss this evidence entirely would be to engage in the same selective reasoning that the theory's harshest critics rightly condemn in its defenders. The dominoes did, in fact, fall — within a specific and definable geographic and political zone.</p>
+    <h3>Laos: The First Domino After Vietnam</h3>
+    <p>The Pathet Lao — a communist movement backed by North Vietnamese forces — captured Vientiane on May 3, 1975, just three days after Saigon's fall. By December 2, 1975, the Lao People's Democratic Republic was officially established, abolishing the monarchy and installing a Marxist-Leninist government that remained a close Vietnamese satellite through a 1977 treaty of friendship and cooperation. <span class="source-tag">Source C</span></p>
+    <p>The speed of this collapse is significant. The Pathet Lao had been fighting for decades, but the fall of South Vietnam removed the last psychological and logistical barrier to their takeover. The causal chain was real: Saigon fell — Laos fell. This sequence — the very sequence predicted by domino theory advocates — cannot be dismissed.</p>
+    <h3>Cambodia: The Second Domino</h3>
+    <p>Cambodia presents an even starker case, though with critical complications. The Khmer Rouge under Pol Pot seized Phnom Penh on April 17, 1975 — thirteen days <em>before</em> Saigon fell — establishing the Democratic Kampuchea regime, responsible for the deaths of approximately 1.7 million people through execution, forced labor, and starvation between 1975 and 1979. <span class="source-tag">Source C</span></p>
+    <p>The Khmer Rouge victory had been enabled by years of North Vietnamese logistical support and the destabilization of Cambodia caused by the Vietnam War — including the 1970 U.S. bombing campaigns and invasion. Whether Cambodia "fell" because of the domino effect or was itself part of the same Indochinese revolutionary movement is a matter of interpretive debate. What is undeniable is that by the end of 1975, all three nations of the former French Indochina — Vietnam, Laos, and Cambodia — were under communist governments.</p>
+    <h3>The Psychological Case</h3>
+    <p>Defenders of the domino theory also point to the psychological impact on the broader region. ASEAN nations — Indonesia, Thailand, the Philippines, Malaysia, and Singapore — were alarmed by Vietnam's expansionism and the influx of over 400,000 Indochinese refugees by 1980. Thailand, directly threatened by Cambodian incursions and hosting anti-Vietnamese insurgents, accelerated diplomatic normalization with China in July 1975. <span class="source-tag">Source C</span> The regional response was one of fear and defensive realignment — precisely what the domino theory predicted a communist victory would produce.</p>
+    <div class="pull-quote">
+      <p>"The decisions by the Eisenhower, Kennedy, and Johnson administrations to resist communist encroachment from North Vietnam into South Vietnam was entirely in keeping with U.S. policy of containment as it was practiced at the time."</p>
+      <cite>— Pro-Intervention Viewpoint, "Was U.S. Military Intervention in Vietnam Justified?" (Source B)</cite>
+    </div>
+    <h3>The Congressional Aid Argument</h3>
+    <p>Defenders of the theory also argue that the Fall of Saigon proves what happens when America fails to maintain its commitments. The U.S. Congress cut military aid from $2.2 billion in FY1973 to $700 million in FY1975. Former Secretary of State Henry Kissinger and other officials argued that this policy presupposed unwavering congressional support, and that its erosion "signaled abandonment and undermined South Vietnamese resolve." <span class="source-tag">Source C</span></p>
+    <p>This argument holds that the domino theory was not disproven by events — rather, America abandoned the experiment before it could succeed. South Vietnam, on this reading, was not inherently incapable of survival; it was deliberately starved of the resources that would have allowed it to maintain independence. Had Congress continued aid at the levels promised, the dominoes need not have fallen at all.</p>
+    <p>The strongest version of the pro-domino argument therefore runs: the theory predicted that communist victory in Vietnam would expand communism in the region, and communist victory in Vietnam did immediately produce communist regimes in Laos and Cambodia, while destabilizing and alarming the entire region. In that narrow sense, the dominoes fell — and the theory was, at minimum, directionally correct.</p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 6 ── -->
+<article class="chapter" id="ch6">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter VI</span></div>
+    <span class="chapter-label">Chapter Six</span>
+    <h2 class="chapter-title">The Argument That the Fall <em>Disproved</em> the Domino Theory</h2>
+    <p class="chapter-subtitle">The decisive case against the theory's broader claims</p>
+    <hr class="chapter-divider">
+    <p>The case against the domino theory, as applied to Vietnam, is ultimately more powerful than the case for it — not because the narrow Indochina dominoes did not fall, but because the <em>whole point</em> of the domino theory was never merely about Laos and Cambodia. The United States did not send 543,000 soldiers to Southeast Asia and spend $14 billion to prevent the fall of two tiny, strategically marginal states. The theory's logic demanded that the loss of Vietnam would inexorably lead to the loss of all of Southeast Asia — Thailand, Malaysia, Indonesia, the Philippines — and eventually threaten American security interests across the Pacific. That prediction failed completely.</p>
+    <h3>The Theory's Own Terms Required Global Collapse</h3>
+    <p>Jerome Slater, writing in the scholarly debate excerpted in our sources, cuts to the heart of the matter with precision: "The whole point of the domino theory was that the loss of less significant countries was important because it would inexorably lead to the loss of significant ones. The United States did not go to war in Vietnam to prevent the spread of communism to two tiny states of Indochina, but rather to prevent the fall of all Southeast Asia, the eventual undermining of much of the rest of the world, and the spread of communism to the shores of America." <span class="source-tag">Source B</span></p>
+    <p>Measured against its own stated objectives — and against the justifications used to send Americans to die — the domino theory was decisively refuted by events after 1975. Thailand did not fall. Malaysia did not fall. Indonesia, the Philippines, Singapore — none of them fell. The broader cascade predicted by the theory did not materialize.</p>
+    <div class="pull-quote">
+      <p>"The most decisive refutation of the domino theory came in 1975 in the aftermath of communist victory in Vietnam. The only subsequent spread of communism in Southeast Asia — let alone beyond — was into Laos and Cambodia."</p>
+      <cite>— Jerome Slater, SUNY Buffalo (Source B)</cite>
+    </div>
+    <h3>The Special Case of Laos and Cambodia</h3>
+    <p>Slater further argues that even the falls of Laos and Cambodia do not vindicate the domino theory, for two reasons. First, they were "special cases because of their historical links to Vietnam" — all three nations composed the traditional Indochinese Federation, and their revolutionary movements were intertwined with Vietnam's struggle for independence from France, not merely ideological extensions of Soviet expansion. Second, and more critically, "their fall was of no strategic significance for Southeast Asian, let alone U.S., security." <span class="source-tag">Source B</span></p>
+    <p>The domino theory was not invented to protect tiny landlocked nations whose strategic value was minimal. It was invented to protect the entire Pacific order. By that measure, the fact that only the two Indochinese neighbors of Vietnam fell — while the rest of Southeast Asia remained anti-communist or neutral — is a refutation of the theory, not a confirmation of it.</p>
+    <h3>Communist Solidarity Was a Myth</h3>
+    <p>The domino theory's foundational premise — that communist nations acted as a coordinated, unified bloc pursuing global expansion — was also shattered by post-1975 events. Vietnam and China, both communist nations, went to war in 1979. China launched a punitive invasion of northern Vietnam on February 17, 1979, involving 200,000 People's Liberation Army troops in a month-long border war. <span class="source-tag">Source C</span> This Sino-Vietnamese War exposed the fiction of communist solidarity and demonstrated that nationalism, not ideology, drove the behavior of communist states.</p>
+    <p>Furthermore, Vietnam's own invasion of Cambodia in December 1978 — overthrowing the Khmer Rouge regime — demonstrated that the "domino" metaphor was inaccurate even within Indochina. Communist states were fighting each other. The image of synchronized dominoes falling in one direction was replaced by the reality of fractured, competing communist powers pursuing their own national interests.</p>
+    <div class="evidence-box">
+      <h4>Why the Theory Was Flawed From the Beginning</h4>
+      <p>The scholarly debate in Source B identifies three conditions that had to be true for the domino theory to apply to Vietnam — and all three were false:</p>
+      <p><strong>False Claim 1:</strong> North Vietnam had to have the intention and capability for widespread expansion throughout Southeast Asia. As subsequent history demonstrated, North Vietnam had neither the desire nor the capability to spread beyond Laos and Cambodia — the traditional Indochinese sphere.</p>
+      <p><strong>False Claim 2:</strong> North Vietnam had to be acting as an instrument of China. Given the long history of Vietnamese resistance to Chinese domination, there was never any reason to suppose a communist Vietnam would serve as China's proxy. By 1979, they were at war.</p>
+      <p><strong>False Claim 3:</strong> China had to have both the intention and capability of widespread expansionism throughout Asia. Most scholars of Chinese foreign policy at the time argued that China was "basically defensive, pragmatic, and cautious" — not the fanatically expansionist power American policymakers imagined.</p>
+      <p style="margin-bottom:0;"><em>Source: Jerome Slater, "Vietnam War: Was U.S. Military Intervention in Vietnam Justified?" (Source B)</em></p>
+    </div>
+    <h3>ASEAN: The Anti-Domino</h3>
+    <p>Perhaps the most powerful counter-evidence to the domino theory is the response of ASEAN nations after 1975. Rather than collapsing into communism, Indonesia and the Philippines "bolstered internal anti-communist measures and ASEAN's Zone of Peace, Freedom, and Neutrality framework." ASEAN coalesced in opposition to Vietnamese expansionism, issuing the 1979 Declaration on the Situation in Kampuchea condemning Vietnam's invasion of Cambodia as a violation of sovereignty. <span class="source-tag">Source C</span></p>
+    <p>Far from falling, the non-Indochinese nations of Southeast Asia were <em>strengthened</em> in their anti-communist resolve by the events of 1975. The domino theory predicted demoralization and collapse; history delivered defiance and consolidation.</p>
+    <h3>The Theory Was "Vacuous" Even at the Time</h3>
+    <p>Jerome Slater's damning conclusion in our source material is worth quoting in full context: the Vietnam War "was also an intellectual disgrace (based as it was on the vacuous premises of the domino theory)." <span class="source-tag">Source B</span> Even the pro-intervention scholarly viewpoint in our sources acknowledges that "we now know that some of them [the arguments for intervention] were not all based on robust factual or logical foundations." <span class="source-tag">Source B</span></p>
+    <p>By 1975, the Sino-Soviet split had already demonstrated that the communist bloc was not monolithic. Evidence was accumulating that the domino theory was implausible even as American involvement escalated. The anti-intervention argument notes that "even as evidence accumulated that the stakes had been exaggerated — because of the Sino-Soviet split, the limited nature of Soviet or Chinese support for North Vietnam, and the growing evidence that the domino theory was implausible — the American role in Vietnam expanded." <span class="source-tag">Source B</span></p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 7 ── -->
+<article class="chapter" id="ch7">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter VII</span></div>
+    <span class="chapter-label">Chapter Seven</span>
+    <h2 class="chapter-title">Geopolitical Aftermath: Did the Dominoes Fall?</h2>
+    <p class="chapter-subtitle">A country-by-country accounting of what happened after Saigon</p>
+    <hr class="chapter-divider">
+    <p>The most empirically honest way to evaluate the domino theory is to examine what actually happened in Southeast Asia after the fall of Saigon. The theory made specific, falsifiable predictions. Let us evaluate them against the historical record drawn from our sources.</p>
+    <table class="arg-table">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Prediction</th>
+          <th>What Happened</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Laos</strong></td>
+          <td>Would fall to communism following Vietnam</td>
+          <td>Pathet Lao captured Vientiane May 3, 1975. Lao PDR established Dec. 2, 1975.</td>
+          <td><span class="proves">Proved (narrowly)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cambodia</strong></td>
+          <td>Would fall following Vietnam</td>
+          <td>Khmer Rouge seized Phnom Penh April 17, 1975 — before Saigon fell. Complex causality.</td>
+          <td><span class="proves">Partially Proved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Thailand</strong></td>
+          <td>Next major domino after Indochina</td>
+          <td>Did NOT fall. Accelerated ties with China and U.S., strengthened defenses.</td>
+          <td><span class="disproves">Disproved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Malaysia</strong></td>
+          <td>Would succumb to communist insurgency</td>
+          <td>Did NOT fall. Anti-communist measures strengthened.</td>
+          <td><span class="disproves">Disproved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Indonesia</strong></td>
+          <td>Would fall or be destabilized</td>
+          <td>Did NOT fall. Bolstered internal anti-communist measures and ASEAN frameworks.</td>
+          <td><span class="disproves">Disproved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Philippines</strong></td>
+          <td>Would be threatened by communist expansion</td>
+          <td>Did NOT fall. Strengthened ASEAN cooperation and anti-communist policies.</td>
+          <td><span class="disproves">Disproved</span></td>
+        </tr>
+        <tr>
+          <td><strong>Singapore</strong></td>
+          <td>Would be threatened by communist expansion</td>
+          <td>Did NOT fall. Prospered as a capitalist city-state.</td>
+          <td><span class="disproves">Disproved</span></td>
+        </tr>
+        <tr>
+          <td><strong>China vs. Vietnam</strong></td>
+          <td>Communist solidarity would unite expansion</td>
+          <td>China and Vietnam went to war in 1979. Communist states fought each other.</td>
+          <td><span class="disproves">Decisively Disproved</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Vietnam's Invasion of Cambodia: Dominoes Against Each Other</h3>
+    <p>The strangest chapter in the post-1975 story is perhaps the most revealing. Vietnam — the nation whose fall was supposed to trigger a wave of communist expansion — invaded and overthrew the Khmer Rouge government of Cambodia in December 1978. The communists were at war with each other. Vietnam installed the pro-Hanoi People's Republic of Kampuchea under Heng Samrin, leading to a Vietnamese occupation that lasted until 1989. <span class="source-tag">Source C</span></p>
+    <p>This outcome was not merely an empirical refutation of the domino theory — it was a reversal of the theory's entire logic. The theory imagined communist nations as unified actors pursuing a common agenda of expansion. What actually happened was that competing communist powers, driven by their own national interests, historical grievances, and ethnic antagonisms, turned on each other. The "monolithic communist bloc" that the domino theory depended upon was a fiction.</p>
+    <h3>The Vietnam Syndrome: America's Real Legacy</h3>
+    <p>The Fall of Saigon did produce one lasting domino effect — but it ran in the opposite direction from what the theory predicted. Instead of communist expansion, it produced American contraction: the "Vietnam Syndrome." This was the pervasive caution in U.S. policymaking against committing ground troops to protracted conflicts without clear, achievable objectives and strong domestic support. <span class="source-tag">Source C</span></p>
+    <p>The 1973 War Powers Resolution curtailed presidential authority to deploy forces without congressional approval. The Weinberger-Powell principles — demanding overwhelming force, vital national interests, and defined exit strategies — were directly informed by Vietnam's failures. General Colin Powell, a Vietnam veteran, articulated these principles in a 1992 article, advocating against "mission creep" and emphasizing public and congressional consensus. <span class="source-tag">Source C</span></p>
+    <p>The irony is considerable: the domino theory predicted that communism would spread outward from Vietnam. What actually spread outward from Vietnam was American restraint — a lasting institutional caution that shaped U.S. foreign policy for decades. The Saigon domino fell inward, not outward.</p>
+  </div>
+</article>
+
+
+<!-- ── CHAPTER 8 ── -->
+<article class="chapter" id="ch8">
+  <div class="page">
+    <hr class="page-rule">
+    <div class="running-head"><span>The Last Domino</span><span>Chapter VIII</span></div>
+    <span class="chapter-label">Chapter Eight</span>
+    <h2 class="chapter-title">The Verdict: What the Evidence Demands</h2>
+    <p class="chapter-subtitle">A clear-eyed conclusion based on the historical record</p>
+    <hr class="chapter-divider">
+    <p>We have now walked through the full record. We have examined the theory's claims, the war's course, the fall itself, and the decades that followed. It is time for a verdict — not a comfortable one that pleases every ideological camp, but an honest one that follows the evidence with the same rigor we would apply to any historical question.</p>
+    <h3>What the Fall of Saigon Proved</h3>
+    <p>The Fall of Saigon proved, in the narrowest possible sense, that communist victory in Vietnam would be followed by communist victories in Laos and Cambodia. This much was predicted, and this much occurred. The Indochinese dominoes fell. Vietnam's neighbors in the traditional Indochinese Federation — nations that had shared French colonial administration and whose revolutionary movements were intertwined with Vietnam's — also fell to communist governments within months of Saigon's capture.</p>
+    <p>The fall also proved that American abandonment of an ally would produce catastrophic humanitarian consequences. The reeducation camps, the boat people crisis, the economic collapse — these were the fruits of communist victory. In that moral sense, those who feared what would happen if South Vietnam fell to communism were tragically correct. The suffering that followed was real, documented, and immense.</p>
+    <h3>What the Fall of Saigon Disproved</h3>
+    <p>The Fall of Saigon disproved the domino theory in every dimension that actually mattered for the justification of American involvement. The broader cascade — through Thailand, Malaysia, Indonesia, the Philippines, Singapore, and across the Pacific — never materialized. ASEAN nations strengthened, not weakened. The Sino-Vietnamese War of 1979 exposed the fiction of monolithic communist solidarity. Communist nations fought each other. The prediction that the loss of Vietnam would lead to the loss of "all Southeast Asia, the eventual undermining of much of the rest of the world, and the spread of communism to the shores of America" — that prediction was false.</p>
+    <p>Furthermore, the theory's underlying premises were false even when American involvement began. North Vietnam was not acting as China's proxy — it was a fiercely independent nationalist movement with centuries of resistance to Chinese domination. China was not a fanatically expansionist power but, as scholars of Chinese foreign policy consistently argued, "basically defensive, pragmatic, and cautious." <span class="source-tag">Source B</span> The communist bloc was not monolithic. The revolution in South Vietnam, while directed in part from Hanoi, had genuine indigenous roots — including legitimate grievances against the Diem regime's repression and the American-backed denial of the 1956 elections.</p>
+    <div class="pull-quote">
+      <p>"Whatever its persuasiveness as an account of the consequences of allowing international aggression to succeed, the domino theory was inapplicable to the Vietnamese conflict."</p>
+      <cite>— Jerome Slater, SUNY Buffalo (Source B)</cite>
+    </div>
+    <h3>The Honest Summary</h3>
+    <p>The domino theory, as applied to Vietnam, was a theory that got the immediate neighborhood right — Laos and Cambodia fell — but this was not the point of the theory. Laos and Cambodia were always going to be affected by whatever happened in Vietnam, given their historical, geographic, and political entanglement with the Indochinese conflict.</p>
+    <p>It got the broader prediction catastrophically wrong. The rest of Southeast Asia did not fall. The theory's central claim — that the loss of Vietnam would trigger a chain reaction across all of Southeast Asia and beyond — was definitively falsified by the events of the following decades.</p>
+    <p>It was built on false premises about communist unity. The Sino-Vietnamese War of 1979 made this undeniable. Communist states pursued national interests, not ideological solidarity. The domino model required a unified, coordinated communist force. That force did not exist.</p>
+    <p>It was used to justify a war whose costs vastly exceeded its strategic stakes. As Jerome Slater put it with brutal precision: "If policymakers believed the domino theory, they should have done far more; if they did not believe it, they should have done far less." <span class="source-tag">Source B</span> The halfway commitment — massive enough to be devastating, but limited enough to remain unwinnable — was the worst of all possible worlds.</p>
+    <h3>A Final Word</h3>
+    <p>History is a ruthless judge. The domino theory was not simply wrong about Vietnam — it was wrong about the nature of communism, wrong about the nature of nationalism, and wrong about the strategic significance of small nations in Southeast Asia. The United States paid for that wrongness in blood, treasure, and the erosion of domestic trust that has never fully recovered.</p>
+    <p>The Fall of Saigon did not prove the domino theory. It proved that the domino theory was, in the end, a product of genuine fear applied to a misunderstood situation — and that misapplied theory, when acted upon at the scale of a great power, produces tragedy proportional to its ambition. The last domino fell. But the rest of the row stood.</p>
+  </div>
+</article>
+
+
+<!-- ── VERDICT ── -->
+<section id="verdict">
+  <div class="page">
+    <h2>The Verdict</h2>
+    <hr class="verdict-divider">
+    <p>The Fall of Saigon <strong>partially proved</strong> the domino theory within Indochina — Laos and Cambodia fell. But it <strong>decisively disproved</strong> the theory's broader claims that all of Southeast Asia and beyond would fall to communism.</p>
+    <hr class="verdict-divider">
+    <p>The rest of the row stood. The dominoes did not fall. The theory failed on its own terms.</p>
+  </div>
+</section>
+
+
+<!-- ── SOURCES ── -->
+<section id="sources">
+  <div class="page">
+    <p class="source-heading">Bibliography</p>
+    <h2 class="sources-title">Sources &amp; References</h2>
+    <div class="source-item">
+      <p><span class="source-letter">[Source A]</span> <strong>"Vietnam War."</strong> Overview article. Covers background from French colonialism through the fall of Saigon (1975), the Tet Offensive, Vietnamization, and the war's impact on Vietnam and the United States. <em>Primary reference used for: general war overview, Kennedy's belief in domino theory, Tet Offensive, Paris Peace Accords, humanitarian aftermath.</em></p>
+    </div>
+    <div class="source-item">
+      <p><span class="source-letter">[Source B]</span> Slater, Jerome, and [Pro-Intervention Author]. <strong>"Vietnam War: Was U.S. Military Intervention in Vietnam Justified?"</strong> Dual-viewpoint scholarly article. Slater (SUNY Buffalo) argues against intervention; the opposing viewpoint defends U.S. policy on containment grounds. <em>Primary reference used for: domino theory logic, Munich analogy, just war arguments, refutation of domino theory, Sino-Soviet split evidence, post-1975 Southeast Asia analysis.</em></p>
+    </div>
+    <div class="source-item">
+      <p><span class="source-letter">[Source C]</span> <strong>"Fall of Saigon."</strong> Extended analytical document covering the Fall of Saigon in comprehensive detail, including prelude, Spring Offensive, Operation Frequent Wind, immediate aftermath, reeducation camps, boat people crisis, geopolitical realignments, U.S. aid debates, and 50th anniversary reassessments. Drawn from a compilation of primary and secondary historical sources including official U.S. military archives, State Department histories, CIA records, and scholarly assessments.</p>
+    </div>
+    <div class="source-item">
+      <p><span class="source-letter">[Source D]</span> Lutz, R. C. <strong>"Fall of Saigon."</strong> <em>Salem Press Encyclopedia,</em> 2021. 3 pp. Accession No. 89110849. EBSCO Industries.</p>
+    </div>
+    <p class="sub-heading">Works Referenced Within Sources</p>
+    <div class="source-item"><p>Elliot, Mai Van Dung. <em>The Sacred Willow.</em> Oxford UP, 1999.</p></div>
+    <div class="source-item"><p>Karnow, Stanley. <em>Vietnam: A History.</em> Viking Press, 1983.</p></div>
+    <div class="source-item"><p>Lâm Quang Thi. <em>The Twenty-Five-Year Century: A South Vietnamese General Remembers the Indochina War to the Fall of Saigon.</em> University of North Texas Press, 2001.</p></div>
+    <div class="source-item"><p>Nguyen, Kien. <em>The Unwanted.</em> Little, Brown, 2001.</p></div>
+    <div class="source-item"><p>Van Tien Dung. <em>Our Great Spring Victory.</em> Translated by John Spragens. Monthly Review Press, 1977.</p></div>
+    <div class="source-item"><p>Martens, Bill. "Comparing and Contrasting Kabul with Saigon." <em>Wisconsin Public Radio,</em> 18 Aug. 2021.</p></div>
+    <div class="source-item"><p>Zelizer, Julian. "This Is Not Saigon 1975." <em>CNN,</em> 17 Aug. 2021.</p></div>
+    <p class="sub-heading">Additional Reference</p>
+    <div class="source-item"><p><strong>[JSTOR]</strong> <a href="https://www.jstor.org/stable/26642146">https://www.jstor.org/stable/26642146</a> — Referenced in project materials as an additional scholarly source related to the Fall of Saigon and domino theory.</p></div>
+  </div>
+</section>
+
+<a href="#cover" class="back-top">&#8593; Return to Beginning</a>
+
+</body>
+</html>
